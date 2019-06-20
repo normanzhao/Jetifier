@@ -14,7 +14,11 @@ mappings = mappings [1:]
 
 node_dir = "node_modules/"
 extensions = ["java", "kt", "xml"]
-reverse = sys.argv[1] == "-r"
+reverse = False
+try:
+	sys.argv[1] == "-r"
+except:
+	pass
 
 for ex in extensions:
     current_count = 0
@@ -23,7 +27,7 @@ for ex in extensions:
         try:
             contents = open(file_to_change).read()
             for mapping in mappings:
-                if !reverse:
+                if not reverse:
                     contents = contents.replace(mapping[0], mapping[1])
                 else:
                     contents = contents.replace(mapping[1], mapping[0])
